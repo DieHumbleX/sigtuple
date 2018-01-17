@@ -1,0 +1,42 @@
+#include <iostream>
+#include <algorithm>
+#include <vector>
+using namespace std;
+ 
+int NumberofPair(int A[],int n)
+{
+    int p ,q ,count=0 ,i;
+
+    for (i=0; i<n; i++) {
+	    p = 0;
+	    q = n-1; 
+	    while (p < q)
+	    {
+	         if(A[p] + A[q] == A[i]){
+	              count++;
+	              p++;
+	         }
+	         else if(A[p] + A[q] < A[i])
+	              p++;
+	         else
+	              q--;
+	    }    
+    }
+    return count;
+}
+ 
+int main()
+{
+	int num,i;
+	cin >> num;
+	int A[num];
+	for (i = 0 ; i < num ; i++){
+	cin >> A[i];	
+	}
+	int A_length = sizeof(A)/sizeof(A[0]);
+	sort(A,A+A_length);
+	cout <<endl<< NumberofPair(A,A_length) << endl;
+ 
+    getchar();
+    return 0;
+}
